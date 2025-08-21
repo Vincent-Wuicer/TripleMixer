@@ -93,6 +93,17 @@ We propose **TripleMixer**, a plug-and-play point cloud denoising network that i
 
 ## LiDAR Perception Benchmarks
 
+### 1) Denoising
+
+
+### 2) Semantic Segmentation (SS)
+
+
+### 3) Place Recognition (PR)
+
+### 3) Object Detection (OD)
+
+
 
 ## Installation
 
