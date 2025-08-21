@@ -79,11 +79,11 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 <p align="center"> <img src="Fig/kitti_semantic.png" width="95%"> </p>
 
 
-## Denoising network
+## Denoising Network
 
 
 
-## LiDAR perception benchmarks
+## LiDAR Perception Benchmarks
 
 
 ## Installation
