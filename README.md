@@ -96,6 +96,9 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 
 ### 1) Denoising
 
+<p align="center"> <img src="Fig/kitti-denoise.png" width="95%"> </p>
+<p align="center"> <img src="Fig/nus-denoise.png" width="95%"> </p>
+
 
 ### 2) Semantic Segmentation (SS)
 
