@@ -92,6 +92,7 @@ We propose **TripleMixer**, a plug-and-play point cloud denoising network that i
 
 
 ## LiDAR Perception Benchmarks
+We establish a Denoising benchmark to evaluate the performance of **our denoising model** and introduce three downstream LiDAR perception benchmarks: **Semantic Segmentation (SS)**, **Place Recognition (PR)**, and **Object Detection (OD)**, to assess the generalization of state‑of‑the‑art perception models under adverse weather and the effectiveness of our denoising model as a preprocessing step. Notably, in all downstream benchmarks, our denoising model is trained in a supervised manner solely on our Weather‑KITTI and Weather‑NuScenes datasets using only point‑wise weather labels. Meanwhile, all perception models are directly tested on real‑world adverse‑weather datasets without any retraining or fine‑tuning. 
 
 ### 1) Denoising
 
