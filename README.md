@@ -104,6 +104,8 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 * Segmentation model selection: 
   - **[SphereFormer](https://arxiv.org/pdf/2303.12766), CVPR 2023.** <sup>[**`[Code]`**](https://github.com/dvlab-research/SphereFormer)</sup>,
   - **[SFPNet](https://arxiv.org/pdf/2407.11569), ECCV 2024.** <sup>[**`[Code]`**](https://github.com/Cavendish518/SFPNet)</sup>,
+  - **[PointTransformerV3](https://arxiv.org/pdf/2312.10035), CVPR 2024.** <sup>[**`[Code]`**](https://github.com/Pointcept/PointTransformerV3)</sup>,
+
 
 
 ### 3) Place Recognition (PR)
