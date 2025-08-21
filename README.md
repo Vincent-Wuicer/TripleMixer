@@ -51,6 +51,17 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
 * 24/08/2024: Initial release and submitted to the Journal. The dataset will be open source soon!
 
 
+
+## Outline
+- [Dataset](#dataset)
+- [Denoising network](#denoising-network)
+- [LiDAR perception benchmarks](#liDAR-perception-benchmarks)
+- [Citation](#citation)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+
+
 ## Dataset
 
 ### 1) Overview
@@ -67,6 +78,9 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 
 ## Denoising network
 
+
+
+## LiDAR perception benchmarks
 
 
 
