@@ -27,6 +27,11 @@
   <a href="https://github.com/Grandzxw/TripleMixer/stargazers" target='_blank'>
     <img src="https://img.shields.io/github/stars/Grandzxw/TripleMixer.svg">
   </a>
+
+  <a href="" target='_blank'>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=Grandzxw.TripleMixer&left_color=gray&right_color=firebrick">
+  </a>
+
 </p>
 
 
