@@ -19,6 +19,16 @@
 </p>
 
 
+<p align="center">
+  <a href="https://www.arxiv.org/pdf/2408.13802" target='_blank'>
+    <img src="https://img.shields.io/badge/arXiv-2009.03137-b31b1b.svg">
+  </a>
+  
+  <a href="https://github.com/Grandzxw/TripleMixer/stargazers" target='_blank'>
+    <img src="https://img.shields.io/github/stars/Grandzxw/TripleMixer.svg">
+  </a>
+</p>
+
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2009.03137-b31b1b.svg)](https://www.arxiv.org/abs/2408.13802)
