@@ -38,7 +38,7 @@
 
 ## Abstract
 Adverse weather conditions such as snow, fog, and rain pose significant challenges to LiDAR-based perception models by introducing noise and corrupting point cloud measurements. To address this issue, we make the following three contributions:
-1. **point cloud denoising network:** we propose **TripleMixer**, a robust and efficient point cloud denoising network that integrates spatial, frequency, and channel-wise processing through three specialized mixer modules. TripleMixer can be seamlessly deployed as a plug-and-play module within existing LiDAR perception pipelines;
+1. **Point cloud denoising network:** we propose **TripleMixer**, a robust and efficient point cloud denoising network that integrates spatial, frequency, and channel-wise processing through three specialized mixer modules. TripleMixer can be seamlessly deployed as a plug-and-play module within existing LiDAR perception pipelines;
 2. **Large-scale adverse weather datasets:** we construct two large-scale simulated datasets, **Weather-KITTI** and **Weather-NuScenes**, covering diverse weather scenarios with dense point-wise semantic and noise annotations;
 3. **LiDAR perception benchmarks:** we establish four benchmarks: **Denoising**, **Semantic Segmentation (SS)**, **Place Recognition (PR)**, and **Object Detection (OD)**. These benchmarks enable systematic evaluation of denoising generalization, transferability, and downstream impact under both simulated and real-world adverse weather conditions.
 
@@ -49,6 +49,34 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
   - **Weather-KITTI:** [Download link](https://pan.baidu.com/s/1lwkIWwiLvtaM2SDKfT0SCg) (code: `xxr1`)  
   - **Weather-NuScenes:** [Download link](https://pan.baidu.com/s/1Qhr4I15W5IuamLC7gZTL8g) (code: `musq`)  
 * 24/08/2024: Initial release and submitted to the Journal. The dataset will be open source soon!
+
+
+## Dataset
+
+### (1) Overview
+
+In this Work, we propose our synthetic adverse weather datasets, named **Weather-KITTI** and **Weather-NuScenes**, which are based on the [SemanticKITTI](https://www.semantic-kitti.org/) and [nuScenes-lidarseg](https://www.nuscenes.org/) datasets, respectively. These datasets cover three common adverse weather conditions: rain, fog, and snow and retain the original LiDAR acquisition information and provide point-level semantic labels for rain, fog, and snow.
+
+<p align="center"> <img src="Fig/combined.png" width="70%" height="700px"> </p>
+<p align="center"> <img src="Fig/comparison.png" width="95%"> </p>
+
+
+### (2) Dataset Statistics
+
+<p align="center"> <img src="Fig/frames.png" width="95%"> </p>
+
+<table border="0">
+  <tr>
+    <td><img src="Fig/kitti_semantic.png" width="100%"></td>
+    <td><img src="Fig/nus_semantic.png" width="100%"></td>
+  </tr>
+</table>
+
+
+
+
+
+
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2009.03137-b31b1b.svg)](https://www.arxiv.org/abs/2408.13802)
@@ -63,6 +91,7 @@ This is the official repository of the **Weather-KITTI** and **Weather-NuScenes*
 [Haojie Bai](https://www.researchgate.net/profile/Haojie-Bai), [Wenhao Dou](https://scholar.google.com.sg/citations?user=WMyb00gAAAAJ&hl=zh-CN&oi=ao). <br />
 
 **[[Paper](https://www.arxiv.org/abs/2408.13802)] [[Blog]()][[Download](https://pan.baidu.com/s/1lwkIWwiLvtaM2SDKfT0SCg)[code:xxr1]] ** <br />
+
 
 ### 1. Dataset
 
