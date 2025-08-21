@@ -80,7 +80,11 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 
 
 ## Denoising Network
+### 1) Overview
 
+We propose **TripleMixer**, a plug-and-play point cloud denoising network that integrates spatial, frequency, and channel-wise processing through three specialized mixer layers. TripleMixer enables interpretable and robust denoising under adverse weather conditions, and can be seamlessly integrated into existing LiDAR perception pipelines to enhance their robustness. The overview of the proposed TripleMixer denoising network is shown below:
+
+<p align="center"> <img src="Fig/triplemixer.png" width="95%"> </p>
 
 
 ## LiDAR Perception Benchmarks
