@@ -106,6 +106,10 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[SFPNet](https://arxiv.org/pdf/2407.11569), ECCV 2024.** <sup>[**`[Code]`**](https://github.com/Cavendish518/SFPNet)</sup>,
   - **[PointTransformerV3](https://arxiv.org/pdf/2312.10035), CVPR 2024.** <sup>[**`[Code]`**](https://github.com/Pointcept/PointTransformerV3)</sup>,
 
+* Benchmarks Results: 
+<p align="center"> <img src="Fig/ss_resu.png" width="95%"> </p>
+
+
 
 ### 3) Place Recognition (PR)
 * Place Recognition model selection: 
@@ -113,6 +117,8 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[CVTNet](https://ieeexplore.ieee.org/document/10273716), TII 2023.** <sup>[**`[Code]`**](https://github.com/BIT-MJY/CVTNet)</sup>,
   - **[LPSNet](https://arxiv.org/pdf/2312.10035), ICRA 2024.** <sup>[**`[Code]`**](https://github.com/Yavinr/LPS-Net)</sup>,
 
+* Benchmarks Results: 
+<p align="center"> <img src="Fig/pr_resu.png" width="95%"> </p>
 
 
 ### 3) Object Detection (OD)
@@ -121,7 +127,8 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[PG-RCNN](https://openaccess.thecvf.com/content/ICCV2023/papers/Koo_PG-RCNN_Semantic_Surface_Point_Generation_for_3D_Object_Detection_ICCV_2023_paper.pdf), ICCV 2023.** <sup>[**`[Code]`**](https://github.com/quotation2520/PG-RCNN)</sup>,
   - **[VoxT-GNN](https://www.sciencedirect.com/science/article/pii/S0306457325000962), IPM 2025.** <sup>[**`[Code]`**](https://github.com/tusifpk/VoxT-GNN)</sup>,
 
-
+* Benchmarks Results: 
+<p align="center"> <img src="Fig/od_resu.png" width="95%"> </p>
 
 
 ## Installation
