@@ -53,13 +53,13 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
 
 ## Dataset
 
-### (1) Overview
+### 1) Overview
 
 Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](https://www.semantic-kitti.org/) and [nuScenes-lidarseg](https://www.nuscenes.org/) datasets, respectively. These datasets cover three common adverse weather conditions: rain, fog, and snow and retain the original LiDAR acquisition information and provide point-level semantic labels for rain, fog, and snow. The visualization results are shown below:
 
 <p align="center"> <img src="Fig/combined.png" width="50%" height="400px"> </p>
 
-### (2) Dataset Statistics
+### 2) Dataset Statistics
 
 <p align="center"> <img src="Fig/frames.png" width="95%"> </p>
 <p align="center"> <img src="Fig/kitti_semantic.png" width="95%"> </p>
