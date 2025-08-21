@@ -43,6 +43,13 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
 3. **LiDAR perception benchmarks:** we establish four benchmarks: **Denoising**, **Semantic Segmentation (SS)**, **Place Recognition (PR)**, and **Object Detection (OD)**. These benchmarks enable systematic evaluation of denoising generalization, transferability, and downstream impact under both simulated and real-world adverse weather conditions.
 
 
+### Updates
+* 08/21/2025: All codes and configurations have been updated!
+* 12/26/2024: The Weather-KITTI and Weather-NuScenes datasets are publicly available on the BaiduPan platform!   
+- **Weather-KITTI:** [Download link](https://pan.baidu.com/s/1lwkIWwiLvtaM2SDKfT0SCg) (code: `xxr1`)  
+- **Weather-NuScenes:** [Download link](https://pan.baidu.com/s/1Qhr4I15W5IuamLC7gZTL8g) (code: `musq`)  
+* 24/08/2024: Initial release and submitted to the Journal. The dataset will be open source soon!
+
 
 [![arXiv](https://img.shields.io/badge/arXiv-2009.03137-b31b1b.svg)](https://www.arxiv.org/abs/2408.13802)
 [![GitHub Stars](https://img.shields.io/github/stars/Grandzxw/TripleMixer.svg)](https://github.com/Grandzxw/TripleMixer/stargazers)
