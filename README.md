@@ -102,7 +102,7 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 
 ### 2) Semantic Segmentation (SS)
 * Segmentation model selection: 
-  **[SphereFormer](https://arxiv.org/pdf/2303.12766), CVPR 2023.** <sup>[**`[Code]`**](https://github.com/dvlab-research/SphereFormer)</sup>,
+  - **[SphereFormer](https://arxiv.org/pdf/2303.12766), CVPR 2023.** <sup>[**`[Code]`**](https://github.com/dvlab-research/SphereFormer)</sup>,
 
 
 ### 3) Place Recognition (PR)
