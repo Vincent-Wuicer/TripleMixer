@@ -62,12 +62,7 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 ### (2) Dataset Statistics
 
 <p align="center"> <img src="Fig/frames.png" width="95%"> </p>
-
-<table border="0">
-  <tr>
-    <td><img src="Fig/kitti_semantic.png" width="100%"></td>
-  </tr>
-</table>
+<p align="center"> <img src="Fig/kitti_semantic.png" width="95%"> </p>
 
 
 
