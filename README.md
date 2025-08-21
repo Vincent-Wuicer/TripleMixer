@@ -75,8 +75,8 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 
 ### 2) Dataset Statistics
 
-<p align="center"> <img src="Fig/frames.png" width="95%"> </p>
-<p align="center"> <img src="Fig/kitti_semantic.png" width="95%"> </p>
+<p align="center"> <img src="Fig/frames.png" width="85%"> </p>
+<p align="center"> <img src="Fig/kitti_semantic.png" width="85%"> </p>
 
 
 ## Denoising Network
@@ -84,11 +84,11 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 
 We propose **TripleMixer**, a plug-and-play point cloud denoising network that integrates spatial, frequency, and channel-wise processing through three specialized mixer layers. TripleMixer enables interpretable and robust denoising under adverse weather conditions, and can be seamlessly integrated into existing LiDAR perception pipelines to enhance their robustness. The overview of the proposed TripleMixer denoising network is shown below:
 
-<p align="center"> <img src="Fig/triplemixer.png" width="85%"> </p>
+<p align="center"> <img src="Fig/triplemixer.png" width="95%"> </p>
 
 ### 2) Results Visualization
 
-<p align="center"> <img src="Fig/denoise-vis.png" width="85%"> </p>
+<p align="center"> <img src="Fig/denoise-vis.png" width="95%"> </p>
 
 
 ## LiDAR Perception Benchmarks
