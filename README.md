@@ -12,8 +12,8 @@
       <a href="https://scholar.google.com.sg/citations?user=WMyb00gAAAAJ&hl=zh-CN&oi=ao" target='_blank'>Wenhao Dou</a><sup>1</sup>
     <br>
   <sup>1</sup>Harbin Institute of Technology&nbsp;&nbsp;&nbsp;
-  <sup>1</sup>Harvard University&nbsp;&nbsp;&nbsp;
-  <sup>2</sup>New York University
+  <sup>2</sup>Harvard University&nbsp;&nbsp;&nbsp;
+  <sup>3</sup>New York University
   </p>
 
 </p>
