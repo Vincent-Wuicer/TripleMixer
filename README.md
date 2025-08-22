@@ -184,8 +184,8 @@ python test_iou_wads.py
 For other datasets, make the corresponding modifications accordingly.
 
 
-## Dataset Generation
-
+## Adverse Weather Dataset Generation
+You can generate your own Adverse Weather Dataset on other LiDAR-based point cloud datasets using the code provided in the tools directory of this repository!
 
 ## Citation
 If you find our work useful in your research, please consider citing:
@@ -200,6 +200,15 @@ If you find our work useful in your research, please consider citing:
       url={https://arxiv.org/abs/2408.13802}, 
 }
 ```
+or
+```bibtex
+@article{zhao2024triplemixer,
+  title={Triplemixer: A 3d point cloud denoising model for adverse weather},
+  author={Zhao, Xiongwei and Wen, Congcong and Wang, Yang and Bai, Haojie and Dou, Wenhao},
+  journal={arXiv preprint arXiv:2408.13802},
+  year={2024}
+}
+```
 
 
 ## License
@@ -207,3 +216,4 @@ The dataset is based on the [SemanticKITTI](https://www.semantic-kitti.org/) dat
 
 
 ## Acknowledgements
+This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing! [Robo3D](https://github.com/ldkong1205/Robo3D), [LiDAR_snow_sim](https://github.com/SysCV/LiDAR_snow_sim), [LiDAR_fog_sim](https://github.com/MartinHahner/LiDAR_fog_sim), [WaffleIron](https://github.com/valeoai/WaffleIron) and [3DOutDet](https://sporsho.github.io/3DOutDet).
