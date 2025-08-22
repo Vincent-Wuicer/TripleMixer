@@ -164,6 +164,24 @@ For other datasets, make the corresponding modifications accordingly.
 ### 2) Evaluation and Test
 Pre-trained models can be downloaded from [Download link](https://drive.google.com/drive/folders/1ay1vbnu-q0zepzhQ8OKyYugzLVa9uSUu?usp=drive_link)
 
+To evaluate the Wads dataset, run:
+```
+cd test
+python eval_wads.py \
+--path_dataset /root/WADS \
+--ckpt ./logs/wads/ckpt_best.pth \
+--config ./configs/Wads.yaml \
+--result_folder ./result/predictions_wads \
+--phase test  \
+--num_workers 12
+```
+
+To test the Wads dataset IOU, run:
+```
+cd test
+python test_iou_wads.py 
+```
+For other datasets, make the corresponding modifications accordingly.
 
 
 ## Dataset Generation
