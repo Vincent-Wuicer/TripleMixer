@@ -187,6 +187,16 @@ For other datasets, make the corresponding modifications accordingly.
 ## Adverse Weather Dataset Generation
 You can generate your own Adverse Weather Dataset on other LiDAR-based point cloud datasets using the code provided in the **tools directory** of this repository!
 
+
+## TODO List
+- [x] Initial release. 🚀
+- [x] Add download links for **Weather-KITTI** and **Weather-NuScenes**.
+- [x] Add Denoising Network code.
+- [x] Add train and evaluation script on Adverse Weather Dataset.
+- [x] Release checkpoints.
+- [ ] ...
+
+
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```bibtex
@@ -216,4 +226,4 @@ The dataset is based on the [SemanticKITTI](https://www.semantic-kitti.org/) dat
 
 
 ## Acknowledgements
-This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing! [Robo3D](https://github.com/ldkong1205/Robo3D), [LiDAR_snow_sim](https://github.com/SysCV/LiDAR_snow_sim), [LiDAR_fog_sim](https://github.com/MartinHahner/LiDAR_fog_sim), [WaffleIron](https://github.com/valeoai/WaffleIron) and [3DOutDet](https://sporsho.github.io/3DOutDet).
+This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing! [Robo3D](https://github.com/ldkong1205/Robo3D), [LiDAR_snow_sim](https://github.com/SysCV/LiDAR_snow_sim), [LiDAR_fog_sim](https://github.com/MartinHahner/LiDAR_fog_sim), and [3DOutDet](https://sporsho.github.io/3DOutDet).
