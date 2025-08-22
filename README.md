@@ -161,7 +161,7 @@ python launch_train.py \
 For other datasets, make the corresponding modifications accordingly.
 
 
-### 1) Training
+### 2) Evaluation and Test
 Pre-trained models can be downloaded from [Download link](https://drive.google.com/drive/folders/1ay1vbnu-q0zepzhQ8OKyYugzLVa9uSUu?usp=drive_link)
 
 
