@@ -147,6 +147,25 @@ pip install -r requirements.txt
 
 ## Training and Evaluation
 
+### 1) Training
+To train the Wads dataset, run:
+```
+python launch_train.py \
+--dataset snow_wads \
+--path_dataset /path/to/wads/ \
+--log_path ./pretrained_models/wads/ \
+--config ./configs/Wads.yaml \
+--gpu 2 \
+--fp16
+```
+For other datasets, make the corresponding modifications accordingly.
+
+
+### 1) Training
+Pre-trained models can be downloaded from [Download link](https://drive.google.com/drive/folders/1ay1vbnu-q0zepzhQ8OKyYugzLVa9uSUu?usp=drive_link)
+
+
+
 ## Dataset Generation
 
 
