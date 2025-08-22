@@ -133,6 +133,17 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 
 ## Installation
 
+We use the following environment:
+```
+conda create -n triplemixer
+conda activate triplemixer
+conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
+pip install pyaml==23.12.0 tqdm==4.63.0 scipy==1.8.0 tensorboard==2.16.2
+git clone https://github.com/Grandzxw/TripleMixer
+cd TripleMixer
+pip install -r requirements.txt
+```
+
 
 ## Training and Evaluation
 
