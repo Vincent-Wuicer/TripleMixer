@@ -1,0 +1,255 @@
+# Copyright 2024 - xiongwei zhao @ grandzhaoxw@gmail.com
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#      http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import torch
+import numpy as np
+import utils.transforms as tr
+from torch.utils.data import Dataset
+from scipy.spatial import cKDTree as KDTree
+
+
+
+class PCDataset(Dataset):
+    def __init__(
+        self,
+        rootdir=None,
+        phase="train",
+        input_feat="intensity",
+        voxel_size=0.1,
+        train_augmentations=None,
+        dim_proj=[
+            0,
+        ],
+        grids_shape=[(256, 256)],
+        fov_xyz=(
+            (
+                -1.0,
+                -1.0,
+                -1.0,
+            ),
+            (1.0, 1.0, 1.0),
+        ),
+        num_neighbors=16,
+        tta=False,
+    ):
+        
+        super().__init__()
+        # Dataset split
+        self.phase = phase
+        assert self.phase in ["train", "val", "trainval", "test"]
+
+        # Root directory of dataset
+        self.rootdir = rootdir
+
+        # Input features to compute for each point
+        self.input_feat = input_feat
+
+        self.downsample = tr.Voxelize(
+            dims=(0, 1, 2),
+            voxel_size=voxel_size,
+            random=(self.phase == "train" or self.phase == "trainval"),
+        )
+
+        # Field of view
+        assert len(fov_xyz[0]) == len(
+            fov_xyz[1]
+        ), "Min and Max FOV must have the same length."
+        for i, (min, max) in enumerate(zip(*fov_xyz)):
+            assert (
+                min < max
+            ), f"Field of view: min ({min}) < max ({max}) is expected on dimension {i}."
+        self.fov_xyz = np.concatenate([np.array(f)[None] for f in fov_xyz], axis=0)
+        self.crop_to_fov = tr.Crop(dims=(0, 1, 2), fov=fov_xyz)
+
+
+        # Grid shape for projection in 2D
+        assert len(grids_shape) == len(dim_proj)
+        self.dim_proj = dim_proj
+        self.grids_shape = [np.array(g) for g in grids_shape]
+        self.lut_axis_plane = {0: (1, 2), 1: (0, 2), 2: (0, 1)}
+
+        # Number of neighbors for geometry layer  embedding的层数
+        assert num_neighbors > 0
+        self.num_neighbors = num_neighbors
+
+        # Test time augmentation
+        if tta:
+            assert self.phase in ["test", "val"]
+            self.tta = tr.Compose(
+                (
+                    tr.Rotation(inplace=True, dim=2),
+                    tr.Rotation(inplace=True, dim=6),
+                    tr.RandomApply(tr.FlipXY(inplace=True), prob=2.0 / 3.0),
+                    tr.Scale(inplace=True, dims=(0, 1, 2), range=0.1),
+                )
+            )
+        else:
+            self.tta = None
+
+        # Train time augmentations
+        if train_augmentations is not None:
+            assert self.phase in ["train", "trainval"]
+        self.train_augmentations = train_augmentations
+
+
+    def get_occupied_2d_cells(self, pc):
+        """Return mapping between 3D point and corresponding 2D cell"""
+        cell_ind = []
+        for dim, grid in zip(self.dim_proj, self.grids_shape):
+            dims = self.lut_axis_plane[dim]
+            res = (self.fov_xyz[1, dims] - self.fov_xyz[0, dims]) / grid[None]
+            # Shift and quantize point cloud
+            pc_quant = ((pc[:, dims] - self.fov_xyz[0, dims]) / res).astype("int")
+            # Check that the point cloud fits on the grid
+            min, max = pc_quant.min(0), pc_quant.max(0)
+            assert min[0] >= 0 and min[1] >= 0, print(
+                "Some points are outside the FOV:", pc[:, :3].min(0), self.fov_xyz
+            )
+            assert max[0] < grid[0] and max[1] < grid[1], print(
+                "Some points are outside the FOV:", pc[:, :3].min(0), self.fov_xyz
+            )
+            # Transform quantized coordinates to cell indices for projection on 2D plane
+            # 
+            temp = pc_quant[:, 0] * grid[1] + pc_quant[:, 1]
+            cell_ind.append(temp[None])
+        return np.vstack(cell_ind)
+
+
+
+    def prepare_input_features(self, pc_orig):
+        # Concatenate desired input features to coordinates
+        pc = [pc_orig[:, :3]]  # Initialize with coordinates
+        for type in self.input_feat:
+            if type == "intensity":
+                pc.append(pc_orig[:, 3:])
+            elif type == "height":
+                pc.append(pc_orig[:, 2:3])
+            elif type == "radius":
+                r_xyz = np.linalg.norm(pc_orig[:, :3], axis=1, keepdims=True)
+                pc.append(r_xyz)
+            elif type == "xyz":
+                pc.append(pc_orig[:, :3])
+            else:
+                raise ValueError(f"Unknown feature: {type}")
+        return np.concatenate(pc, 1)
+
+    def load_pc(self, index):
+        raise NotImplementedError()
+
+    def __len__(self):
+        raise NotImplementedError()
+
+    def __getitem__(self, index):
+        pc_orig, labels_orig, filename = self.load_pc(index)
+                
+        pc_orig = self.prepare_input_features(pc_orig)
+
+        if self.tta is not None:
+            pc_orig, labels_orig = self.tta(pc_orig, labels_orig)
+
+        pc, labels = self.downsample(pc_orig, labels_orig)
+
+        if self.train_augmentations is not None:
+            pc, labels = self.train_augmentations(pc, labels)
+
+        pc, labels = self.crop_to_fov(pc, labels)
+
+        cell_ind = self.get_occupied_2d_cells(pc)
+
+        kdtree = KDTree(pc[:, :3])
+        assert pc.shape[0] > self.num_neighbors
+        _, neighbors_emb = kdtree.query(pc[:, :3], k=self.num_neighbors + 1)
+
+        if self.phase in ["train", "trainval"]:
+            upsample = np.arange(pc.shape[0])
+        else:
+            _, upsample = kdtree.query(pc_orig[:, :3], k=1)
+
+        out = (
+            pc[:, 3:].T[None],
+            labels if self.phase in ["train", "trainval"] else labels_orig,
+            cell_ind[None],
+            neighbors_emb.T[None],
+            upsample,
+            filename,
+        )
+
+        return out
+
+
+
+def zero_pad(feat, neighbors_emb, cell_ind, Nmax):
+    N = feat.shape[-1]
+    assert N <= Nmax
+    occupied_cells = np.ones((1, Nmax))
+    if N < Nmax:
+        feat = np.concatenate((feat, np.zeros((1, feat.shape[1], Nmax - N))), axis=2)
+        neighbors_emb = np.concatenate(
+            (
+                neighbors_emb,
+                (Nmax - 1) * np.ones((1, neighbors_emb.shape[1], Nmax - N)),
+            ),
+            axis=2,
+        )
+        cell_ind = np.concatenate(
+            (cell_ind, np.zeros((1, cell_ind.shape[1], Nmax - N))), axis=2
+        )
+        occupied_cells[:, N:] = 0
+    return feat, neighbors_emb, cell_ind, occupied_cells
+
+
+
+
+class Collate:
+    def __init__(self, num_points=None):
+        self.num_points = num_points
+        assert num_points is None or num_points > 0
+
+    def __call__(self, list_data):
+        list_of_data = (list(data) for data in zip(*list_data))
+        feat, label_orig, cell_ind, neighbors_emb, upsample, filename = list_of_data
+
+        Nmax = np.max([f.shape[-1] for f in feat])
+        
+        if self.num_points is not None:
+            assert Nmax <= self.num_points
+        occupied_cells = []
+        for i in range(len(feat)):
+            feat[i], neighbors_emb[i], cell_ind[i], temp = zero_pad(
+                feat[i],
+                neighbors_emb[i],
+                cell_ind[i],
+                Nmax if self.num_points is None else self.num_points,
+            )
+            occupied_cells.append(temp)
+
+        feat = torch.from_numpy(np.vstack(feat)).float()  # B x C x Nmax
+        neighbors_emb = torch.from_numpy(np.vstack(neighbors_emb)).long()  # B x Nmax
+        cell_ind = torch.from_numpy(
+            np.vstack(cell_ind)
+        ).long()  # B x nb_2d_cells x Nmax
+        occupied_cells = torch.from_numpy(np.vstack(occupied_cells)).float()  # B x Nmax
+        
+        labels_orig = torch.from_numpy(np.hstack(label_orig)).long()
+        upsample = [torch.from_numpy(u) for u in upsample]
+
+        # Prepare output variables
+        out = {
+            "feat": feat,
+            "neighbors_emb": neighbors_emb,
+            "upsample": upsample,
+            "labels_orig": labels_orig,
+            "cell_ind": cell_ind,
+            "occupied_cells": occupied_cells,
+            "filename": filename,
+        }
+
+        return out

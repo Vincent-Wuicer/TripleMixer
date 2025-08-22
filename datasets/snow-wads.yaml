@@ -1,0 +1,64 @@
+# This file is covered by the LICENSE file in the root of this project.
+labels:
+  0: "not-snow"
+  1: "Snow"
+  9 : "unlabelled"
+
+
+color_map: # bgr  可视化能够观察到每个类别的颜色
+  0 : [50, 200, 0]      # non-snow
+  1 : [255, 255, 255]  # snow
+  9 : [0, 0, 0]
+
+content: # as a ratio with the total number of points  表示每个类别占比  雪花点和非雪花点的占比
+  0: 0.85
+  1: 0.15 # true 0.03
+  9: 0.0
+
+
+# classes that are indistinguishable from single scan or inconsistent in
+# ground truth are mapped to their closest equivalent learning_map: 它是一个字典，键是原始类别ID，值是目标类别ID
+# learning_map中的9: 0表示将原始类别ID为9（unlabelled）的类别映射到目标类别ID为0（non-snow）的类别。
+# 这意味着在训练过程中，将原始类别ID为9的类别视为目标类别ID为0的类别进行处理。
+
+learning_map:
+  9 : 0     # unlabeled
+  0 : 1     # non-snow
+  1 : 2     # snow
+
+
+# learning_map_inv中的0: 9表示将目标类别ID为0（non-snow）的类别映射回原始类别ID为9（unlabelled）的类别。这意味着在训练过程中，
+# 将目标类别ID为0的类别的预测结果映射回原始类别ID为9的类别
+learning_map_inv: # inverse of previous map  相反
+  0: 9      # unlabeled
+  1: 0      # non-snow
+  2: 1      # snow
+
+learning_ignore: # Ignore classes  unlabeled的需要被忽略 不计算  unlabel的需要被忽略
+  0: True      # unlabeled
+  1: False     # non-snow
+  2: False     # snow
+
+split: # sequence numbers
+  test:
+      - 12
+      - 13
+      - 17
+      - 22
+      - 23
+      - 26
+      - 30
+      - 35
+      - 76
+  train:
+      - 14
+      - 15
+      - 18
+      - 20
+      - 24
+      - 28
+      - 34
+      - 36
+  valid:
+      - 11
+      - 16

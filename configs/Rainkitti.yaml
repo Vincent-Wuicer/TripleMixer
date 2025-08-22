@@ -1,0 +1,61 @@
+resolution: # Architecture of the backbone
+  nb_channels: 32  # Define F = the feature size
+  depth: 9         # Define L = the depth on the network
+  fov_xyz:          # Define the FOV in meters
+    - - -50 # min value on x-axis: -50 m
+      - -50 # min value on y-axis: -50 m
+      - -3  # min value on z-axis: -5 m
+    - - 50  # max value on x-axis: 50 m
+      - 50  # max value on y-axis: 50 m
+      - 2   # max value on z-axis: 5 m
+  dim_proj:         # Define the sequence of projection (which is then repeated sequentially until \ell = L)
+    - 2  # Project along the z axis at \ell = 1 (and then the same at all layer)
+    - 1  # At \ell = 2, project along y
+    - 0  # At \ell = 1, project along x
+  grids_size:       # Define here the size of the 2D grids
+    - [256, 256]    
+    - [256,  24]    
+    - [256,  24]    
+  drop: 0.2
+
+
+classif: # Architecture of the classifcation layer
+  nb_class: 3      # Number of classes on nuscenes (after removing the ignore class)
+
+geometry: # Architecture of the geometry layer
+  input_feat:       # List of features on each point
+    - "intensity"
+    - "xyz"
+    - "radius"
+  size_input: 5     # Input feature size on each point
+  neighbors: 3     # Neighborhood for geometry layer
+  voxel_size: 0.1   # Voxel size for downsampling point cloud in pre-processing
+
+
+dataloader:
+  batch_size: 4
+  num_workers: 12
+  max_points: 20000
+
+augmentations:
+  rotation: 
+    - [2, 6]
+  flip_xy: null
+  scale:
+    - [4, 5, 6, 7]
+    - 0.1
+
+
+loss:
+  lovasz: 1.0
+
+
+optim:
+  lr: .001
+  weight_decay: 0.003
+
+
+scheduler:
+  min_lr: 0.00001
+  max_epoch: 10
+  epoch_warmup: 2
