@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="fig/tri.png" align="center" width="22.5%">
+  <img src="figs/tri.png" align="center" width="22.5%">
   
   <h3 align="center"><strong>TripleMixer: A 3D Point Cloud Denoising Model for Adverse Weather</strong></h3>
 
@@ -71,12 +71,12 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
 
 Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](https://www.semantic-kitti.org/) and [nuScenes-lidarseg](https://www.nuscenes.org/) datasets, respectively. These datasets cover three common adverse weather conditions: rain, fog, and snow and retain the original LiDAR acquisition information and provide point-level semantic labels for rain, fog, and snow. The visualization results are shown below:
 
-<p align="center"> <img src="fig/combined.png" width="50%" height="400px"> </p>
+<p align="center"> <img src="figs/combined.png" width="50%" height="400px"> </p>
 
 ### 2) Dataset Statistics
 
-<p align="center"> <img src="fig/frames.png" width="85%"> </p>
-<p align="center"> <img src="fig/kitti_semantic.png" width="85%"> </p>
+<p align="center"> <img src="figs/frames.png" width="85%"> </p>
+<p align="center"> <img src="figs/kitti_semantic.png" width="85%"> </p>
 
 
 ## Denoising Network
@@ -84,11 +84,11 @@ Our **Weather-KITTI** and **Weather-NuScenes** are based on the [SemanticKITTI](
 
 We propose **TripleMixer**, a plug-and-play point cloud denoising network that integrates spatial, frequency, and channel-wise processing through three specialized mixer layers. TripleMixer enables interpretable and robust denoising under adverse weather conditions, and can be seamlessly integrated into existing LiDAR perception pipelines to enhance their robustness. The overview of the proposed TripleMixer denoising network is shown below:
 
-<p align="center"> <img src="fig/triplemixer.png" width="95%"> </p>
+<p align="center"> <img src="figs/triplemixer.png" width="95%"> </p>
 
 ### 2) Results Visualization
 
-<p align="center"> <img src="fig/denoise-vis.png" width="95%"> </p>
+<p align="center"> <img src="figs/denoise-vis.png" width="95%"> </p>
 
 
 ## LiDAR Perception Benchmarks
@@ -96,8 +96,8 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 
 ### 1) Denoising
 
-<p align="center"> <img src="fig/kitti-denoise.png" width="95%"> </p>
-<p align="center"> <img src="fig/nus-denoise.png" width="95%"> </p>
+<p align="center"> <img src="figs/kitti-denoise.png" width="95%"> </p>
+<p align="center"> <img src="figs/nus-denoise.png" width="95%"> </p>
 
 
 ### 2) Semantic Segmentation (SS)
@@ -107,7 +107,7 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[PointTransformerV3](https://arxiv.org/pdf/2312.10035), CVPR 2024.** <sup>[**`[Code]`**](https://github.com/Pointcept/PointTransformerV3)</sup>,
 
 * Benchmarks Results: 
-<p align="center"> <img src="fig/ss_resu.png" width="95%"> </p>
+<p align="center"> <img src="figs/ss_resu.png" width="95%"> </p>
 
 
 
@@ -118,7 +118,7 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[LPSNet](https://arxiv.org/pdf/2312.10035), ICRA 2024.** <sup>[**`[Code]`**](https://github.com/Yavinr/LPS-Net)</sup>,
 
 * Benchmarks Results: 
-<p align="center"> <img src="fig/pr_resu.png" width="95%"> </p>
+<p align="center"> <img src="figs/pr_resu.png" width="95%"> </p>
 
 
 ### 3) Object Detection (OD)
@@ -128,7 +128,7 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
   - **[VoxT-GNN](https://www.sciencedirect.com/science/article/pii/S0306457325000962), IPM 2025.** <sup>[**`[Code]`**](https://github.com/tusifpk/VoxT-GNN)</sup>,
 
 * Benchmarks Results: 
-<p align="center"> <img src="fig/od_resu.png" width="95%"> </p>
+<p align="center"> <img src="figs/od_resu.png" width="95%"> </p>
 
 
 ## Installation
