@@ -185,7 +185,7 @@ python test_iou_wads.py
 For other datasets, make the corresponding modifications accordingly.
 
 
-## Adverse Weather Dataset Generation
+## Dataset Generation
 You can generate your own Adverse Weather Dataset on other LiDAR-based point cloud datasets using the code provided in the **tools directory** of this repository!
 
 
