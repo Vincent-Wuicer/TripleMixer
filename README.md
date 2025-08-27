@@ -122,7 +122,7 @@ We establish a Denoising benchmark to evaluate the performance of **our denoisin
 <p align="center"> <img src="figs/pr_resu.png" width="95%"> </p>
 
 
-### 3) Object Detection (OD)
+### 4) Object Detection (OD)
 * Detection model selection: 
   - **[TED-S](https://arxiv.org/abs/2211.11962), AAAI 2023.** <sup>[**`[Code]`**](https://github.com/hailanyi/TED)</sup>,
   - **[PG-RCNN](https://openaccess.thecvf.com/content/ICCV2023/papers/Koo_PG-RCNN_Semantic_Surface_Point_Generation_for_3D_Object_Detection_ICCV_2023_paper.pdf), ICCV 2023.** <sup>[**`[Code]`**](https://github.com/quotation2520/PG-RCNN)</sup>,
