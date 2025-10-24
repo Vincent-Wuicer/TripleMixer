@@ -44,6 +44,7 @@ Adverse weather conditions such as snow, fog, and rain pose significant challeng
 
 
 ## Updates
+* 09/25/2025: Our paper has been accepted by IEEE TIP! 🎉🎉
 * 08/22/2025: All codes and configurations have been updated!
 * 12/26/2024: The Weather-KITTI and Weather-NuScenes datasets are publicly available on the BaiduPan platform!   
   - **Weather-KITTI:** [Download link](https://pan.baidu.com/s/1lwkIWwiLvtaM2SDKfT0SCg) (code: `xxr1`)  
